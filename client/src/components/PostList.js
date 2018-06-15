@@ -19,11 +19,12 @@ class PostList extends Component {
     if (answerInfo.length > 0) {
       this.props.fetchResponses(questionId);
     }
+    return;
   }
 
-  componentDidMount() {
-    this.props.fetchPosts();
-  }
+  // componentDidMount() {
+  //   this.props.fetchPosts();
+  // }
 
   renderPosts() {
     return _.map(this.props.posts, data => {

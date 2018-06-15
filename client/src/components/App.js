@@ -14,6 +14,7 @@ const Activity = () => <h2>Activity</h2>;
 class App extends Component {
   componentDidMount() {
     this.props.fetchAPI();
+    this.props.fetchPosts();
   }
 
   render() {

@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 
 class Comments extends Component {
+  // renderResponses() {
+  //   // const responseArr = this.props.responses.data;
+  //
+  //   return _.map(this.props.responses.data, response => {
+  //   });
+  // }
+
   render() {
-    console.log(this.props);
-    return <div>Comments</div>;
+    return <div />;
+    // return <div>{this.renderResponses()}</div>;
   }
 }
 
