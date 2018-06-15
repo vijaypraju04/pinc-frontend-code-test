@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { FETCH_CURRENT_USER } from './types';
 import { FETCH_POSTS } from './types';
+import { FETCH_RESPONSES } from './types';
 
 export const fetchAPI = () => async dispatch => {
   const res = await axios.get('https://staging-api.pincapp.com/api/questions');
@@ -8,10 +9,37 @@ export const fetchAPI = () => async dispatch => {
 };
 // const paginatedAPI = {};
 
+export const fetchResponses = questionId => async dispatch => {
+  const res = await axios.get(
+    `https://staging-api.pincapp.com/api/questions/${questionId}/answers`
+  );
+
+  console.log(res);
+  dispatch({ type: FETCH_RESPONSES, payload: res.data });
+};
+
 export const fetchPosts = () => async dispatch => {
-  const firstPage = await axios.get(
+  let currentPage = await axios.get(
     'https://staging-api.pincapp.com/api/questions'
   );
+
+  const paginatedAPI = {};
+
+  let count = 0;
+
+  while (currentPage) {
+    paginatedAPI[count] = currentPage;
+
+    if (currentPage['data']['links']['self'].includes('30')) {
+      break;
+    }
+
+    currentPage = await axios.get(currentPage['data']['links']['self']);
+
+    count++;
+  }
+
+  console.log(paginatedAPI);
 
   // const secondPage = await axios.get(firstPage['data']['links']['next']);
   //
@@ -32,7 +60,7 @@ export const fetchPosts = () => async dispatch => {
   //
   // console.log(paginatedAPI);
 
-  dispatch({ type: FETCH_POSTS, payload: firstPage.data });
+  dispatch({ type: FETCH_POSTS, payload: paginatedAPI });
 };
 // export const fetchAPI = () =>
 //   axios

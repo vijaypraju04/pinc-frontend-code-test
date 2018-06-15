@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-const Comments = props => {
-  console.log(props);
-  if (props.latest_answerers_info !== []) {
-    console.log(props.latest_answerers_info);
+class Comments extends Component {
+  render() {
+    console.log(this.props);
+    return <div>Comments</div>;
   }
-  return <div>Comments</div>;
-};
+}
 
-export default Comments;
+function mapStateToProps({ responses }) {
+  return { responses };
+}
+
+export default connect(mapStateToProps)(Comments);

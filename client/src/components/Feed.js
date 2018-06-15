@@ -16,12 +16,12 @@ const Feed = () => {
         <Divider hidden />
         <Container textAlign="center">
           <Link to="/feed/posts">
-            <Button size="huge" inverted color="violet">
+            <Button inverted color="violet">
               Posts
             </Button>
           </Link>
           <Link to="/feed/polls">
-            <Button size="huge" inverted color="violet">
+            <Button inverted color="violet">
               Polls
             </Button>
           </Link>
