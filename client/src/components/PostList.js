@@ -15,7 +15,7 @@ class PostList extends Component {
   }
 
   renderResponses(questionId, answerInfo) {
-    // console.log(questionId);
+    console.log(questionId);
     if (answerInfo.length > 0) {
       this.props.fetchResponses(questionId);
     }

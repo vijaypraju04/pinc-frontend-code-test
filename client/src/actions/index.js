@@ -30,7 +30,7 @@ export const fetchPosts = () => async dispatch => {
   while (currentPage) {
     paginatedAPI[count] = currentPage;
 
-    if (currentPage['data']['links']['self'].includes('30')) {
+    if (currentPage['data']['links']['self'].includes('10')) {
       break;
     }
 
