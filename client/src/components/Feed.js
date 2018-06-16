@@ -13,7 +13,6 @@ const Feed = () => {
           <Conversation />
         </Container>
         <Divider hidden />
-        <Divider hidden />
         <Container textAlign="center">
           <Link to="/feed/posts">
             <Button inverted color="violet">
@@ -26,7 +25,6 @@ const Feed = () => {
             </Button>
           </Link>
         </Container>
-        <Divider />
       </Grid.Column>
     </Grid>
   );

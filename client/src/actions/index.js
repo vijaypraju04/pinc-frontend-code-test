@@ -14,7 +14,6 @@ export const fetchResponses = questionId => async dispatch => {
     `https://staging-api.pincapp.com/api/questions/${questionId}/answers`
   );
 
-  console.log(res);
   dispatch({ type: FETCH_RESPONSES, payload: res.data });
 };
 
