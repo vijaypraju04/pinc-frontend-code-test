@@ -23,6 +23,56 @@ class PostList extends Component {
     }
   }
 
+  renderEmoji(emojiData) {
+    if (emojiData.length > 0) {
+      if (emojiData['0']['sentiment_id'] == 1) {
+        return (
+          <Image
+            src="http://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-11/256/grinning-face-with-smiling-eyes.png"
+            avatar
+            floated="right"
+          />
+        );
+      }
+      if (emojiData['0']['sentiment_id'] == 4) {
+        return (
+          <Image
+            src="http://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-11/256/smiling-face-with-open-mouth.png"
+            avatar
+            floated="right"
+          />
+        );
+      }
+      if (emojiData['0']['sentiment_id'] == 5) {
+        return (
+          <Image
+            src="http://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-11/256/smiling-face-with-open-mouth-and-cold-sweat.png"
+            avatar
+            floated="right"
+          />
+        );
+      }
+      if (emojiData['0']['sentiment_id'] == 6) {
+        return (
+          <Image
+            src="http://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-11/256/disappointed-but-relieved-face.png"
+            avatar
+            floated="right"
+          />
+        );
+      }
+      if (emojiData['0']['sentiment_id'] == 7) {
+        return (
+          <Image
+            src="http://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-11/256/thinking-face.png"
+            avatar
+            floated="right"
+          />
+        );
+      }
+    }
+  }
+
   renderResponses(questionId, answerInfo) {
     console.log(questionId);
     if (answerInfo.length > 0) {
@@ -36,6 +86,7 @@ class PostList extends Component {
       _.map(this.props.posts, data => {
         const pagePosts = data['data'];
         _.map(pagePosts['data'], post => {
+          console.log(post.attributes.aggregated_sentiment_counts);
           {
             this.renderResponses(
               post.id,
@@ -77,7 +128,12 @@ class PostList extends Component {
                         src={post.attributes.author_info.avatar_medium}
                       />
                       <h3 centered>{post.attributes.text}</h3>
-                      <p>posted by {post.attributes.author_info.name}</p>
+                      <p>
+                        posted by {post.attributes.author_info.name}
+                        {this.renderEmoji(
+                          post.attributes.aggregated_sentiment_counts
+                        )}
+                      </p>
                     </div>
                   </Card.Content>
                   <Card.Description>
