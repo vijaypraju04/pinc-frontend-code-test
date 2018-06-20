@@ -10,10 +10,19 @@ import { FETCH_POSTS } from '../actions/types';
 //   }
 // }
 
-export default function(state = { posts: [], post: {} }, action) {
+// export default function(state = { posts: [], post: {} }, action) {
+//   switch (action.type) {
+//     case SHOW_POST:
+//       return { ...state, post: action.payload };
+//     case FETCH_POSTS:
+//       return { ...state, posts: action.payload };
+//     default:
+//       return state;
+//   }
+// }
+
+export default function(state = { posts: [] }, action) {
   switch (action.type) {
-    case SHOW_POST:
-      return { ...state, post: action.payload };
     case FETCH_POSTS:
       return { ...state, posts: action.payload };
     default:
