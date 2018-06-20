@@ -81,21 +81,17 @@ class PostList extends Component {
     return;
   }
 
-  componentDidUpdate() {
-    if (this.props.posts) {
-      _.map(this.props.posts, data => {
-        const pagePosts = data['data'];
-        _.map(pagePosts['data'], post => {
-          console.log(post.attributes.aggregated_sentiment_counts);
-          {
-            this.renderResponses(
-              post.id,
-              post.attributes.latest_answerers_info
-            );
-          }
-        });
+  shouldComponentUpdate() {
+    _.map(this.props.posts, data => {
+      const pagePosts = data['data'];
+      _.map(pagePosts['data'], post => {
+        console.log(post.attributes.aggregated_sentiment_counts);
+        {
+          this.renderResponses(post.id, post.attributes.latest_answerers_info);
+        }
       });
-    }
+    });
+    return true;
   }
   // componentDidMount() {
   //   this.props.fetchPosts();
@@ -168,3 +164,19 @@ function mapStateToProps({ posts }) {
 export default connect(mapStateToProps, { fetchPosts, fetchResponses })(
   PostList
 );
+
+//
+// function mapStateToProps({ posts, response }) {
+//   return { posts, response };
+// }
+//
+// function mapDispatchToProps(dispatch) {
+//   return bindActionCreators({
+//     fetchPosts: fetchPosts,
+//     fetchResponses: fetchResponses
+//   }, dispatch)
+// }
+//
+// export default connect(mapStateToProps, mapDispatchToProps)(
+//   PostList
+// );

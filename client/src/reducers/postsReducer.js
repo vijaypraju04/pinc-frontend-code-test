@@ -9,3 +9,14 @@ export default function(state = [], action) {
       return state;
   }
 }
+
+// export default function(state = { posts: [], post: {} }, action) {
+//   switch (action.type) {
+//     case SHOW_POST:
+//       return { ...state, post: action.payload };
+//     case FETCH_POSTS:
+//       return { ...state, posts: action.payload };
+//     default:
+//       return state;
+//   }
+// }

@@ -38,6 +38,9 @@ class Comments extends Component {
   }
 
   render() {
+    if (!this.props.responses) {
+      return <div />;
+    }
     return <div>{this.renderResponses()}</div>;
   }
 }

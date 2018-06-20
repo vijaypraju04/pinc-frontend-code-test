@@ -5,7 +5,9 @@ import * as actions from '../actions';
 import Nav from './Nav';
 import Feed from './Feed';
 import PostList from './PostList';
+import Comments from './Comments';
 import { Divider } from 'semantic-ui-react';
+import _ from 'lodash';
 
 const Groups = () => <h2>Groups</h2>;
 const Activity = () => <h2>Activity</h2>;
@@ -33,4 +35,8 @@ class App extends Component {
   }
 }
 
-export default connect(null, actions)(App);
+function mapStateToProps({ posts }) {
+  return { posts };
+}
+
+export default connect(mapStateToProps, actions)(App);
